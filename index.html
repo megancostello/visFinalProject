@@ -19,10 +19,69 @@
     <h1>Vega-Lite Uber Lyft Graphs</h1>
     <!-- Container for the visualization -->
     <div id="vis"></div>
-
+    <script>
+        var vlSpec = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "cab_rides.csv"},
+            
+                    "mark": "rect",
+                    "encoding": {
+                        "y": {"field": "destination", "type": "nominal"},
+                        "x": {"field": "source", "type": "nominal"},
+                        "color": {"aggregate": "count",
+                        "type": "quantitative"},
+                        "tooltip": {"aggregate": "count", "type": "quantitative"}
+                    },
+                    "config": {
+                        "axis": {"grid": true, "tickBand": "extent"}
+                    }
+        };
     
 
-      
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis', vlSpec);
+    </script>
+    <br><br>
+    <div id="vis2"></div>
+    <script>
+        var vlSpec2 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "weather.csv"},
+            "hconcat":[
+                {
+                    "mark": "bar",
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "sum", "field": "rain"},
+                    "tooltip": {"aggregate": "sum", "field": "rain", "type": "quantitative"}
+                    }
+                },
+                {
+                    "mark": "bar",
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "mean", "field": "temp"},
+                    "tooltip": {"aggregate": "mean", "field": "temp","type": "quantitative"}
+                    }
+                },
+                {
+                    "mark": "bar",
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "mean", "field": "wind"},
+                    "tooltip": {"aggregate": "mean", "field": "wind", "type": "quantitative"}
+                    }
+                }
+            ]
+            
+  
+        };
+
+
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis2', vlSpec2);
     </script>
   </body>
 </html>
