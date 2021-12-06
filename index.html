@@ -51,26 +51,29 @@
             "data": {"url": "weather.csv"},
             "hconcat":[
                 {
-                    "mark": "bar",
+                    "mark": "circle",
                     "encoding": {
                     "x": {"field": "location", "type": "nominal"},
                     "y": {"aggregate": "sum", "field": "rain"},
+                    "size": {"aggregate": "sum", "field": "rain", "type": "quantitative"},
                     "tooltip": {"aggregate": "sum", "field": "rain", "type": "quantitative"}
                     }
                 },
                 {
-                    "mark": "bar",
+                    "mark": "circle",
                     "encoding": {
                     "x": {"field": "location", "type": "nominal"},
                     "y": {"aggregate": "mean", "field": "temp"},
+                    "size": {"aggregate": "mean", "field": "temp", "type": "quantitative"},
                     "tooltip": {"aggregate": "mean", "field": "temp","type": "quantitative"}
                     }
                 },
                 {
-                    "mark": "bar",
+                    "mark": "circle",
                     "encoding": {
                     "x": {"field": "location", "type": "nominal"},
                     "y": {"aggregate": "mean", "field": "wind"},
+                    "size": {"aggregate": "mean", "field": "wind", "type": "quantitative"},
                     "tooltip": {"aggregate": "mean", "field": "wind", "type": "quantitative"}
                     }
                 }
@@ -83,5 +86,132 @@
     // Embed the visualization in the container with id `vis`
     vegaEmbed('#vis2', vlSpec2);
     </script>
+    <br><br>
+    <div id="vis3"></div>
+    <script>
+        var vlSpec3 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "weather.csv"},
+            "layer": [
+                {
+                  "mark": {"type":"circle", "color": "#e41a1c"},
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "sum", "field": "rain"},
+                    "size": {"aggregate": "sum", "field": "rain", "type": "quantitative"},
+                    "tooltip": {"aggregate": "sum", "field": "rain", "type": "quantitative"}
+                    }
+                },
+                {
+                  "mark": {"type":"circle", "color": "#377eb8"},
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "mean", "field": "temp"},
+                    "size": {"aggregate": "mean", "field": "temp", "type": "quantitative"},
+                    "tooltip": {"aggregate": "mean", "field": "temp","type": "quantitative"}
+                    }
+                },
+                  {
+                    "mark": {"type":"circle", "color": "#4daf4a"},
+                    "encoding": {
+                    "x": {"field": "location", "type": "nominal"},
+                    "y": {"aggregate": "mean", "field": "wind"},
+                    "size": {"aggregate": "mean", "field": "wind", "type": "quantitative"},
+                    "tooltip": {"aggregate": "mean", "field": "wind", "type": "quantitative"}
+                    }
+                  }
+                
+            ]
+                    
+
+        };
+
+
+    // Embed the visualization in the container with id `vis`
+    vegaEmbed('#vis3', vlSpec3);
+    </script>
+    <br><br>
+    <div id="vis4"></div>
+    <script>
+        var vlSpec4 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "https://raw.githubusercontent.com/ryanraff43/FinalProjectData/master/cab_rides_Lyft.csv"},
+
+                    "mark": {"type":"bar", "color":"#FF00BF"},
+                    "encoding": {
+                    "x": {"field": "name", "type": "nominal", "title": "Lyft Type"},
+                    "y": {"aggregate": "average", "field": "Lyft Price"},
+                   
+                    "tooltip": {"aggregate": "average", "field": "price", "type": "quantitative"}
+                    }
+                  };
+
+  // Embed the visualization in the container with id `vis`
+  vegaEmbed('#vis4', vlSpec4);
+    </script>
+    <div id="vis5"></div>
+    <script>
+        var vlSpec5 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "https://raw.githubusercontent.com/ryanraff43/FinalProjectData/master/cab_rides_Uber.csv"},
+
+                    "mark": {"type": "bar", "color": "black"},
+                    "encoding": {
+                    "x": {"field": "name", "type": "nominal", "title": "Uber Type"},
+                    "y": {"aggregate": "average", "field": "Uber Price"},
+                   
+                    "tooltip": {"aggregate": "average", "field": "price", "type": "quantitative"}
+                    }
+                  };
+
+  // Embed the visualization in the container with id `vis`
+  vegaEmbed('#vis5', vlSpec5);
+    </script>
+
+</script>
+<div id="vis6"></div>
+<script>
+    var vlSpec6 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "https://raw.githubusercontent.com/ryanraff43/FinalProjectData/master/cab_rides_Lyft.csv"},
+
+                    "mark": {"type":"bar", "color":"#FF00BF"},
+                    "encoding": {
+                    "x": {"bin": true, "field": "Lyft Distance", "type": "quantitative", "title": "Lyft Distance (miles)"},
+                    "y": {"aggregate": "average", "field": "Lyft Price"},
+                   
+                    "tooltip": {"aggregate": "average", "field": "Lyft Price", "type": "quantitative"}
+                    }
+                  };
+
+// Embed the visualization in the container with id `vis`
+vegaEmbed('#vis6', vlSpec6);
+</script>
+
+<div id="vis7"></div>
+    <script>
+        var vlSpec7 = {
+            
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "data": {"url": "https://raw.githubusercontent.com/ryanraff43/FinalProjectData/master/cab_rides_Uber.csv"},
+
+                    "mark": {"type": "bar", "color": "black"},
+                    "encoding": {
+                    "x": {"bin": true, "field": "Uber Distance", "type": "quantitative", "title": "Uber Distance (miles)"},
+                    "y": {"aggregate": "average", "field": "Uber Price"},
+                   
+                    "tooltip": {"aggregate": "average", "field": "price", "type": "quantitative"}
+                    }
+                  };
+
+  // Embed the visualization in the container with id `vis`
+  vegaEmbed('#vis7', vlSpec7);
+    </script>
+
+</script>
   </body>
 </html>
